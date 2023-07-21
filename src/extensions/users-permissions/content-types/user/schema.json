@@ -1,0 +1,138 @@
+{
+  "kind": "collectionType",
+  "collectionName": "up_users",
+  "info": {
+    "name": "user",
+    "description": "",
+    "singularName": "user",
+    "pluralName": "users",
+    "displayName": "User"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "username": {
+      "type": "string",
+      "minLength": 3,
+      "unique": true,
+      "configurable": false,
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "minLength": 6,
+      "configurable": false,
+      "required": true
+    },
+    "provider": {
+      "type": "string",
+      "configurable": false
+    },
+    "password": {
+      "type": "password",
+      "minLength": 6,
+      "configurable": false,
+      "private": true,
+      "searchable": false
+    },
+    "resetPasswordToken": {
+      "type": "string",
+      "configurable": false,
+      "private": true,
+      "searchable": false
+    },
+    "confirmationToken": {
+      "type": "string",
+      "configurable": false,
+      "private": true,
+      "searchable": false
+    },
+    "confirmed": {
+      "type": "boolean",
+      "default": false,
+      "configurable": false
+    },
+    "blocked": {
+      "type": "boolean",
+      "default": false,
+      "configurable": false
+    },
+    "role": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.role",
+      "inversedBy": "users",
+      "configurable": false
+    },
+    "createdJobs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::azhil.azhil",
+      "mappedBy": "user"
+    },
+    "profileType": {
+      "type": "enumeration",
+      "enum": [
+        "talent",
+        "employer"
+      ],
+      "required": true
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review",
+      "mappedBy": "recieved"
+    },
+    "reviewsIGave": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review",
+      "mappedBy": "user"
+    },
+    "profile": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::talent.talent",
+      "mappedBy": "user"
+    },
+    "firstname": {
+      "type": "string"
+    },
+    "lastname": {
+      "type": "string"
+    },
+    "mobileNumber": {
+      "type": "string"
+    },
+    "favourites": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::favourite.favourite",
+      "mappedBy": "user"
+    },
+    "isCreatedProfile": {
+      "type": "boolean",
+      "required": true
+    },
+    "invitedJobs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::azhil.azhil",
+      "mappedBy": "invitedUser"
+    },
+    "bookedJobs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::azhil.azhil",
+      "mappedBy": "bookedBy"
+    },
+    "appliedJobs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::azhil.azhil",
+      "mappedBy": "appliedUsers"
+    }
+  }
+}
