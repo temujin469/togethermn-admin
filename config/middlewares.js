@@ -7,7 +7,11 @@ module.exports = [
     config: {
       enabled: true,
       header: "*",
-      origin: ["http://147.182.246.185:1337"],
+      origin: [
+        "http://147.182.246.185:1337",
+        "https://master--togethermn.netlify.app",
+        "*",
+      ],
     },
   },
   "strapi::logger",
