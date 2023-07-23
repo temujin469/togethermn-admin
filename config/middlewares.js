@@ -1,7 +1,18 @@
 module.exports = [
   "strapi::errors",
   "strapi::security",
-  "strapi::cors",
+  {
+    name: "strapi::cors",
+    config: {
+      enabled: true,
+      header: "*",
+      origin: [
+        "http://147.182.246.185:1337",
+        "https://master--togethermn.netlify.app",
+        "*"
+      ],
+    },
+  },
   "strapi::poweredBy",
   "strapi::logger",
   "strapi::query",
